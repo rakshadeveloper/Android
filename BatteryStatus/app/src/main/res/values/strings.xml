@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Battery Status</string>
+    <string name="hi">hello_world</string>
+    <string name="ok">hello_world</string>
+    <string name="hello_world">hello_world</string>
+</resources>
