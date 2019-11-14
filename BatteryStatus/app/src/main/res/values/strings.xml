@@ -3,4 +3,7 @@
     <string name="hi">hello_world</string>
     <string name="ok">hello_world</string>
     <string name="hello_world">hello_world</string>
+    <string name="button">Button</string>
+    <string name="rectangle">Rectangle</string>
+    <string name="circle">Circle</string>
 </resources>

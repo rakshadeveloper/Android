@@ -4,52 +4,88 @@
     android:layout_height="match_parent">
 
 
-<!--    <ImageView-->
-<!--        android:id="@+id/battery"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:contentDescription="@string/hello_world"-->
-<!--        android:src="@drawable/battery"-->
-<!--        android:layout_marginTop="48dp" />-->
+    <ImageView
+        android:id="@+id/battery"
+        android:layout_width="143dp"
+        android:layout_height="106dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="314dp"
+        android:contentDescription="@string/hello_world"
+
+        android:src="@drawable/logor" />
 
     <TextView
         android:id="@+id/battery_level"
-        android:layout_width="204dp"
-        android:layout_height="wrap_content"
+        android:layout_width="214dp"
+        android:layout_height="105dp"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentLeft="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
         android:layout_marginTop="24dp"
-        android:text="hello"
+        android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textAlignment="center"/>
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/voltage_level"
-        android:layout_width="204dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/battery_ChargingStatus"
+        android:layout_width="212dp"
+        android:layout_height="107dp"
         android:layout_below="@+id/battery_level"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:text="w"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textAlignment="center"/>
+        android:layout_alignParentEnd="true"
 
-    <TextView
-        android:id="@+id/temperature_level"
-        android:layout_width="210dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/voltage_level"
+        android:layout_alignParentRight="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:text="orld"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginRight="97dp"
+        android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textAlignment="center"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnRectangleShape"
+        android:layout_width="141dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginBottom="61dp"
+        android:background="@drawable/button_rectangle_shape"
+        android:text="@string/rectangle" />
+
+    <Button
+        android:id="@+id/btnCircleShape"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/button_circle_shape"
+        android:text="@string/circle" />
+
+
+    <!--    <TextView-->
+<!--        android:id="@+id/temperature_level"-->
+<!--        android:layout_width="210dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/voltage_level"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="24dp"-->
+
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textAlignment="center"/>-->
 
 </RelativeLayout>

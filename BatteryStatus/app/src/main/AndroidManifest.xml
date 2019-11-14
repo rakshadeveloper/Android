@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.batterystatus">
 
     <application
@@ -14,8 +15,49 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+
+<!--                <shape-->
+<!--                    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--                    android:shape="rectangle"   >-->
+
+<!--                    <solid-->
+<!--                        android:color="@color/colorAccent" >-->
+<!--                    </solid>-->
+
+<!--                    <corners-->
+<!--                        android:radius="11dp"   >-->
+<!--                    </corners>-->
+
+<!--                </shape>-->
+
+<!--                <style android:name="AppTheme.RoundedCornerMaterialButton" android:parent="Widget.AppCompat.Button.Colored">-->
+<!--                    <item android:name="android:background">@drawable/rounded_shape</item>-->
+<!--                </style>-->
+
             </intent-filter>
+<!--            <receiver android:name=".PowerConnectionReceiver"-->
+<!--                tools:ignore="WrongManifestParent">-->
+<!--                <intent-filter>-->
+<!--                    <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>-->
+<!--                    <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>-->
+<!--                </intent-filter>-->
+<!--            </receiver>-->
+<!--            <receiver android:name=".BatteryLevelReceiver"-->
+<!--                tools:ignore="WrongManifestParent">-->
+<!--                <intent-filter>-->
+<!--                    <action android:name="android.intent.action.BATTERY_LOW"/>-->
+<!--                    <action android:name="android.intent.action.BATTERY_OKAY"/>-->
+<!--                </intent-filter>-->
+<!--            </receiver>-->
+
         </activity>
+
     </application>
 
 </manifest>

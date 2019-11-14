@@ -3,7 +3,8 @@ package com.example.firstapplication
 data class Hobby (var title: String)
 
 object Supplier {
-    val hobbies = listOf<Hobby>(Hobby("Swimming"),
+    val hobbies = listOf<Hobby>(
+        Hobby("Swimming"),
         Hobby("Walking"),
         Hobby("Reading"),
         Hobby("Writing"),

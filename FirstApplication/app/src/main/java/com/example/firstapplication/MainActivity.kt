@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -33,7 +34,10 @@ class MainActivity : AppCompatActivity() {
         }
         btnRecyclerView.setOnClickListener{
             val intent = Intent(this, HobbiesActivity::class.java)
+            Toast.makeText(this, "not Run", Toast.LENGTH_SHORT).show()
+//            Log.i("Main_Activity", "Clicked")
             startActivity(intent)
+
         }
     }
 }
