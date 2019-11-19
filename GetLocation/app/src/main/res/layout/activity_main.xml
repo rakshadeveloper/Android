@@ -14,6 +14,35 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="@string/get_location" />
+    <TextView
+        android:id="@+id/tvLatLong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/tvDistnace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:singleLine="true"
+        android:nestedScrollingEnabled="true" />
+
+        <TextView
+            android:id="@+id/tvspeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tvVariableTime"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center_horizontal"/>-->
+    <TextView
+        android:id="@+id/startTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/tv_result"
