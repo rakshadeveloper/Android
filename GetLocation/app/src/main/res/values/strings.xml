@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Get Location</string>
     <string name="get_location">Get Location</string>
+    <string name="stop">Stop</string>
 </resources>

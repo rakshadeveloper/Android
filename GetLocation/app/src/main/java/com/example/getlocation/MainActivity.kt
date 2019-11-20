@@ -27,10 +27,10 @@ private const val PERMISSION_REQUEST = 10
 
 class MainActivity : AppCompatActivity() {
     private var current: Long = 0
-    var lati1: Double = 0.0
-    var longi1: Double = 0.0
-    var lati2: Double = 0.0
-    var longi2: Double = 0.0
+    var lastLat: Double = 0.0
+    var lastLong: Double = 0.0
+    var currentLat: Double = 0.0
+    var currentLng: Double = 0.0
 
     lateinit var locationManager: LocationManager
     private var hasGps = false
@@ -44,9 +44,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val initialTextViewTranslationY = tvspeed.translationY
-
-        disableView()
+//        disableView()
+        getLocation()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkPermission(permissions)) {
@@ -71,10 +70,9 @@ class MainActivity : AppCompatActivity() {
     private fun enableView() {
         btn_get_location.isEnabled = true
         btn_get_location.alpha = 1F
-        btn_get_location.setOnClickListener { getLocation()
-        getSpeed()
-            tvspeed.text = getSpeed().toString()
-        }
+//        btn_get_location.setOnClickListener {disableView()
+//        }
+
         Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
     }
 
@@ -87,8 +85,8 @@ class MainActivity : AppCompatActivity() {
 
             if (hasGps) {
                 Log.d("CodeAndroidLocation", "hasGps")
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0F, object : LocationListener {
-                    @RequiresApi(Build.VERSION_CODES.O)
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0F, object : LocationListener {
+//                    @RequiresApi(Build.VERSION_CODES.O)
                     override fun onLocationChanged(location: Location?) {
                         if (location != null) {
                             locationGps = location
@@ -97,20 +95,20 @@ class MainActivity : AppCompatActivity() {
                             tv_result.append("\nLongitude : " + locationGps!!.longitude)
                             Log.d("CodeAndroidLocation", " GPS Latitude : " + locationGps!!.latitude)
                             Log.d("CodeAndroidLocation", " GPS Longitude : " + locationGps!!.longitude)
-//                            val lati:String = tvLati.append(locationGps!!.latitude.toString()).toString()
-//                            val longi:String = tvLongi.append(locationGps!!.longitude.toString()).toString()
-//                            Log.d("Time", " Current in hh : " + getCurrentTime())
-                            dist()
-                            Log.e("startTime", "${startTime}")
-                            startTime.text = "${getTime()}"
-//                            tvspeed.text = "${getSpeed()}"
-                            val lati1 = 26.8467
-                            val longi1= 80.9462
-                            tvLatLong.text = "$lati1 + $longi1"
-                            lati2 = locationGps!!.latitude
-                            longi2 = locationGps!!.longitude
+
+                            Log.e("startTime", "${getTime()}")
+                            Log.e("speed", "${tvspeed}")
+                            startTime.text = "Time : ${getTime()}"
+                            tvspeed.text = "Speed : ${getSpeed()} km/h"
+
+                            tvLatLong.text = "$lastLat + $lastLong"
+                            currentLat = locationGps!!.latitude
+                            currentLng = locationGps!!.longitude
 //                            tvDistnace.append( dist().toString())
-                            tvDistnace.text = "${dist()} Km"
+                            dist()
+                            Log.e("distance", "${dist()}")
+                            tvDistnace.text = "Distnace : ${dist()} Km"
+//                            tvDistnace.append("\nDist : " + dist())
                         }
 
                     }
@@ -135,7 +133,7 @@ class MainActivity : AppCompatActivity() {
             }
             if (hasNetwork) {
                 Log.d("CodeAndroidLocation", "hasGps")
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0F, object : LocationListener {
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0F, object : LocationListener {
                     override fun onLocationChanged(location: Location?) {
                         if (location != null) {
                             locationNetwork = location
@@ -144,6 +142,20 @@ class MainActivity : AppCompatActivity() {
                             tv_result.append("\nLongitude : " + locationNetwork!!.longitude)
                             Log.d("CodeAndroidLocation", " Network Latitude : " + locationNetwork!!.latitude)
                             Log.d("CodeAndroidLocation", " Network Longitude : " + locationNetwork!!.longitude)
+
+                            Log.e("startTime", "${getTime()}")
+                            Log.e("speed", "${tvspeed}")
+                            startTime.text = "Time : ${getTime()}"
+                            tvspeed.text = "Speed : ${getSpeed()} km/h"
+
+                            tvLatLong.text = "$lastLat + $lastLong"
+                            currentLat = locationNetwork!!.latitude
+                            currentLng = locationNetwork!!.longitude
+//                            tvDistnace.append( dist().toString())
+//                            dist()
+                            Log.e("distance", "${dist()}")
+                            tvDistnace.text = "Distnace : ${dist()} Km"
+//                            tvDistnace.append("\nDist : " + dist())
                         }
                     }
 
@@ -187,43 +199,66 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     fun dist(): Float {
+
         val earthRadius = 6371000.0 //meters
-        val dLat = Math.toRadians(lati2 - lati1)
-        val dLng = Math.toRadians(longi2 - longi1)
-        val a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(lati1)) * Math.cos(
-                Math.toRadians(lati2)
-            ) *
-                    Math.sin(dLng / 2) * Math.sin(dLng / 2)
-        val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-        var dist = (earthRadius * c).toFloat()
-        dist /= 1000
-        return dist
+
+
+        if (lastLat == 0.0 && lastLong == 0.0) {
+
+            val lati1 = currentLat
+            val longi1= currentLng
+
+            val dLat = Math.toRadians(currentLat - lati1)
+            val dLng = Math.toRadians(currentLng - longi1)
+            val a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(lati1)) * Math.cos(
+                    Math.toRadians(currentLat)
+                ) *
+                        Math.sin(dLng / 2) * Math.sin(dLng / 2)
+            val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+            var dist = (earthRadius * c).toFloat()
+//            dist /= 1000
+//            dist += dist
+            lastLat = currentLat
+            lastLong = currentLng
+            return dist
+        }
+        else {
+            val dLat = Math.toRadians(currentLat - lastLat)
+            val dLng = Math.toRadians(currentLng - lastLong)
+            val a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(lastLat)) * Math.cos(
+                    Math.toRadians(currentLat)
+                ) *
+                        Math.sin(dLng / 2) * Math.sin(dLng / 2)
+            val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+            var dist = (earthRadius * c).toFloat()
+//            dist /= 1000
+//            dist += dist
+            lastLat = currentLat
+            lastLong = currentLng
+            return dist
+        }
+
     }
 
     private fun getTime (): String {
         current = System.currentTimeMillis()
         // Creating date format
         // Creating date format
-        val simple: DateFormat = SimpleDateFormat("HH:mm")
+        val simple: DateFormat = SimpleDateFormat("HH:mm:ss")
+        // Creating date from milliseconds
+        // using Date() constructor
 
-        // Creating date from milliseconds
-        // using Date() constructor
-        // Creating date from milliseconds
-        // using Date() constructor
         val result = Date(current)
-
-        // Formatting Date according to the
-        // given format
-        // Formatting Date according to the
-        // given format
-        // System.out.println(simple.format(result))
         return simple.format(result)
 
     }
     fun getSpeed(): Float {
-
+        current /= 1000
+        current /= 60
         var speed: Float = dist() / current
         return speed
     }

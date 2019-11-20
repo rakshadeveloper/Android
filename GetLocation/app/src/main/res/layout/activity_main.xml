@@ -1,53 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/btn_get_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="@string/get_location" />
+        android:text="@string/stop"
+        />
+
     <TextView
         android:id="@+id/tvLatLong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        />
+
     <TextView
         android:id="@+id/tvDistnace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:singleLine="true"
-        android:nestedScrollingEnabled="true" />
 
-        <TextView
-            android:id="@+id/tvspeed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"/>
-<!--        <TextView-->
-<!--            android:id="@+id/tvVariableTime"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:gravity="center_horizontal"/>-->
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        />
+
+    <TextView
+        android:id="@+id/tvspeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        />
+
     <TextView
         android:id="@+id/startTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        />
 
     <TextView
         android:id="@+id/tv_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"/>
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:scrollbars="horizontal"
+        />
 
 </LinearLayout>
