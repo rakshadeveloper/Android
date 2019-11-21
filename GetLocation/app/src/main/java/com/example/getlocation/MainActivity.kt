@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     var lastLong: Double = 0.0
     var currentLat: Double = 0.0
     var currentLng: Double = 0.0
+    var dist: Float = 0.0f
 
     lateinit var locationManager: LocationManager
     private var hasGps = false
@@ -90,6 +91,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onLocationChanged(location: Location?) {
                         if (location != null) {
                             locationGps = location
+                            var speed = locationGps!!.speed
                             tv_result.append("\nGPS ")
                             tv_result.append("\nLatitude : " + locationGps!!.latitude)
                             tv_result.append("\nLongitude : " + locationGps!!.longitude)
@@ -99,7 +101,8 @@ class MainActivity : AppCompatActivity() {
                             Log.e("startTime", "${getTime()}")
                             Log.e("speed", "${tvspeed}")
                             startTime.text = "Time : ${getTime()}"
-                            tvspeed.text = "Speed : ${getSpeed()} km/h"
+//                            tvspeed.text = "Speed : ${getSpeed()} km/h"
+                            tvspeed.text = "Speed : $speed m/s"
 
                             tvLatLong.text = "$lastLat + $lastLong"
                             currentLat = locationGps!!.latitude
@@ -137,6 +140,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onLocationChanged(location: Location?) {
                         if (location != null) {
                             locationNetwork = location
+                            var speed = locationNetwork!!.speed
                             tv_result.append("\nNetwork ")
                             tv_result.append("\nLatitude : " + locationNetwork!!.latitude)
                             tv_result.append("\nLongitude : " + locationNetwork!!.longitude)
@@ -146,7 +150,7 @@ class MainActivity : AppCompatActivity() {
                             Log.e("startTime", "${getTime()}")
                             Log.e("speed", "${tvspeed}")
                             startTime.text = "Time : ${getTime()}"
-                            tvspeed.text = "Speed : ${getSpeed()} km/h"
+//                            tvspeed.text = "Speed : ${getSpeed()} km/h"
 
                             tvLatLong.text = "$lastLat + $lastLong"
                             currentLat = locationNetwork!!.latitude
@@ -156,6 +160,8 @@ class MainActivity : AppCompatActivity() {
                             Log.e("distance", "${dist()}")
                             tvDistnace.text = "Distnace : ${dist()} Km"
 //                            tvDistnace.append("\nDist : " + dist())
+
+                            tvspeed.text = "Speed : $speed m/s"
                         }
                     }
 
@@ -218,9 +224,9 @@ class MainActivity : AppCompatActivity() {
                 ) *
                         Math.sin(dLng / 2) * Math.sin(dLng / 2)
             val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-            var dist = (earthRadius * c).toFloat()
+            dist = (earthRadius * c).toFloat()
 //            dist /= 1000
-//            dist += dist
+            dist += dist
             lastLat = currentLat
             lastLong = currentLng
             return dist
@@ -234,9 +240,9 @@ class MainActivity : AppCompatActivity() {
                 ) *
                         Math.sin(dLng / 2) * Math.sin(dLng / 2)
             val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-            var dist = (earthRadius * c).toFloat()
+            dist = (earthRadius * c).toFloat()
 //            dist /= 1000
-//            dist += dist
+            dist += dist
             lastLat = currentLat
             lastLong = currentLng
             return dist
@@ -256,12 +262,12 @@ class MainActivity : AppCompatActivity() {
         return simple.format(result)
 
     }
-    fun getSpeed(): Float {
-        current /= 1000
-        current /= 60
-        var speed: Float = dist() / current
-        return speed
-    }
+//    fun getSpeed(): Float {
+//        current /= 1000
+//        current /= 60
+//        var speed: Float = dist() / current
+//        return speed
+//    }
 
     private fun checkPermission(permissionArray: Array<String>): Boolean {
         var allSuccess = true
