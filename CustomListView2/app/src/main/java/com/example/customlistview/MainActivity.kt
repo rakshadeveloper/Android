@@ -8,11 +8,12 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var listView: ListView
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        listView = findViewById(R.id.textView)
+        listView = findViewById(R.id.listView)
         val list = mutableListOf<Hero>()
 
         list.add(Hero(R.drawable.andwomen, "antwomen"))

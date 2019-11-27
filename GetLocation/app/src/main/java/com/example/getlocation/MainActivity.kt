@@ -22,7 +22,6 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 private const val PERMISSION_REQUEST = 10
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     var currentLat: Double = 0.0
     var currentLng: Double = 0.0
     var dist: Float = 0.0f
+    var speed: Float = 0.0F
 
     lateinit var locationManager: LocationManager
     private var hasGps = false
@@ -47,10 +47,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 //        disableView()
         getLocation()
-
+        dist()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkPermission(permissions)) {
                 Handler().post({
+                    getLocation()
+
                     enableView()
                 })
             } else {
@@ -71,8 +73,13 @@ class MainActivity : AppCompatActivity() {
     private fun enableView() {
         btn_get_location.isEnabled = true
         btn_get_location.alpha = 1F
-//        btn_get_location.setOnClickListener {disableView()
+//        btn_get_location.setOnClickListener {
 //        }
+        btn_get_location.setOnClickListener {
+            hasGps = false
+            hasNetwork = false
+            getLocation()
+        }
 
         Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
     }
@@ -82,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         hasGps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
         hasNetwork = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-        if (hasGps || hasNetwork) {
+        if ((hasGps || hasNetwork) && checkPermission(permissions)) {
 
             if (hasGps) {
                 Log.d("CodeAndroidLocation", "hasGps")
@@ -91,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onLocationChanged(location: Location?) {
                         if (location != null) {
                             locationGps = location
-                            var speed = locationGps!!.speed
+                            speed = locationGps!!.speed
                             tv_result.append("\nGPS ")
                             tv_result.append("\nLatitude : " + locationGps!!.latitude)
                             tv_result.append("\nLongitude : " + locationGps!!.longitude)
@@ -140,7 +147,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onLocationChanged(location: Location?) {
                         if (location != null) {
                             locationNetwork = location
-                            var speed = locationNetwork!!.speed
+                            speed = locationNetwork!!.speed
                             tv_result.append("\nNetwork ")
                             tv_result.append("\nLatitude : " + locationNetwork!!.latitude)
                             tv_result.append("\nLongitude : " + locationNetwork!!.longitude)
@@ -160,7 +167,6 @@ class MainActivity : AppCompatActivity() {
                             Log.e("distance", "${dist()}")
                             tvDistnace.text = "Distnace : ${dist()} Km"
 //                            tvDistnace.append("\nDist : " + dist())
-
                             tvspeed.text = "Speed : $speed m/s"
                         }
                     }
@@ -204,7 +210,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
         }
     }
-
 
     fun dist(): Float {
 
