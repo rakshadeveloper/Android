@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LinearLayout</string>
+    <string name="name">Name</string>
+    <string name="hi_there">Hi !! there</string>
+</resources>

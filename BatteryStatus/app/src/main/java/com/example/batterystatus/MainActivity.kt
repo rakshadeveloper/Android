@@ -8,10 +8,7 @@ import android.os.BatteryManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.StringBuilder
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,13 +25,9 @@ class MainActivity : AppCompatActivity() {
     private val myBroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
 
-
-
-
             val batteryStatus: Intent? = IntentFilter(Intent.ACTION_BATTERY_CHANGED).let { ifilter ->
                 context?.registerReceiver(null, ifilter)
             }
-
             val status: Int = batteryStatus?.getIntExtra(BatteryManager.EXTRA_STATUS, -1) ?: -1
             val isCharging: Boolean = status == BatteryManager.BATTERY_STATUS_CHARGING
                     || status == BatteryManager.BATTERY_STATUS_FULL
@@ -47,9 +40,7 @@ class MainActivity : AppCompatActivity() {
                 val level: Int = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
                 val scale: Int = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
                 level / scale.toFloat()
-
             }
-
             val percenage: Int = batteryPct?.times(100)!!.toInt()
             if (percenage != null) {
                 percenage.toInt()
@@ -58,6 +49,9 @@ class MainActivity : AppCompatActivity() {
 
             if ( isCharging ) {
                 battery_ChargingStatus.text = "Charging"
+            }
+            else if(percenage == 100) {
+                battery_ChargingStatus.text = "Battery Full"
             }
             else {
                 battery_ChargingStatus.text = "Not Charging"
