@@ -16,6 +16,14 @@ class SecondActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
+        var clicked1 = intent.getBooleanExtra("clicked1", false)
+        var clicked2 = intent.getBooleanExtra("clicked2", false)
+        if (clicked1 == true) {
+            btButton.visibility = View.GONE
+        }
+        if (clicked2 == true) {
+            button2.visibility = View.GONE
+        }
     }
 
 }

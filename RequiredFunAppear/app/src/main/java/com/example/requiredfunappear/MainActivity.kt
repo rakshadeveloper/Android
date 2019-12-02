@@ -13,33 +13,33 @@ class MainActivity : AppCompatActivity() {
 
     var clicked1: Boolean = false
     var clicked2: Boolean = false
+    lateinit var mainActivity: MainActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContent();
+    }
+
+    private fun setContent() {
         setContentView(R.layout.activity_main)
 
+        mainActivity = this
+
         btn1.setOnClickListener {
-//            btButton.visibility = View.INVISIBLE
+            //            btButton.visibility = View.INVISIBLE
             clicked1 = true
-            }
+        }
         btn2.setOnClickListener {
-//            button2.visibility = View.GONE
+            //            button2.visibility = View.GONE
             clicked2 = true
         }
         nextActivity.setOnClickListener {
-
-            if (clicked1 == true || clicked2 == true) {
-                setContentView(R.layout.activity_second)
-                if (clicked1 == true) {
-                    btButton.visibility = View.GONE
-                }
-                if (clicked2 == true) {
-                    button2.visibility = View.GONE
-                }
-            }
-            else {
-                setContentView(R.layout.activity_second)
-            }
+            var intent = Intent(mainActivity, SecondActivity::class.java)
+            intent.putExtra("clicked1", clicked1)
+            intent.putExtra("clicked2", clicked2)
+            startActivity(intent)
+            clicked1 = false
+            clicked2 = false
         }
     }
 }
