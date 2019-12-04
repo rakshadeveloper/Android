@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Coach App</string>
+    <string name="todo">TODO</string>
+    <string name="login">Login</string>
+    <string name="driver_app_v_1_0">Driver App V 1.0</string>
+    <string name="fragmentone">FragmentOne</string>
+    <string name="GotoOther">Button</string>
+    <string name="gotoother">GotoOther</string>
+
+</resources>
