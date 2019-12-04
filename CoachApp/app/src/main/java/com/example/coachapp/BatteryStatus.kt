@@ -5,22 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.BatteryManager
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        getSupportActionBar()!!.hide()
-
-        var intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-        this.registerReceiver(myBroadcastReceiver,intentFilter)
-    }
-
+class BatteryStatus {
     private val myBroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
 
@@ -43,13 +29,17 @@ class MainActivity : AppCompatActivity() {
             val percenage: Int = batteryPct?.times(100)!!.toInt()
             if (percenage != null) {
                 percenage.toInt()
-                progressBar.incrementProgressBy(percenage)
+//                battery_level.text = "$percenage %"
             }
-            if ( isCharging ) {
 
+            if ( isCharging ) {
+//                battery_ChargingStatus.text = "Charging"
+            }
+            else if(percenage == 100) {
+//                battery_ChargingStatus.text = "Battery Full"
             }
             else {
-                ivChargingStaus.setVisibility(View.GONE)
+//                battery_ChargingStatus.text = "Not Charging"
             }
         }
 
