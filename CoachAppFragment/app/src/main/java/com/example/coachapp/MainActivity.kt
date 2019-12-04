@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() , FragmentScreenOne.OnFragmentScreenOneListener ,
-    FragmentScreentoe.OnFragmentScreentoeListener {
+    FragmentScreentoe.OnFragmentScreentoeListener , FragmentScreenThree.OnFragmentScreenThreeListener {
 
     private val fragmentManager = supportFragmentManager
 
@@ -52,6 +52,10 @@ class MainActivity : AppCompatActivity() , FragmentScreenOne.OnFragmentScreenOne
 
     override fun onGotoOtherPressed() {
         loadFragment(R.id.frameLayout,fragmentManager.beginTransaction() , FragmentScreenOne() , "FragmentScreenOne", false)
+    }
+
+    override fun onGotoThreePressed() {
+        loadFragment(R.id.frameLayout,fragmentManager.beginTransaction() , FragmentScreenThree() , "FragmentScreenThree", false)
     }
 
 

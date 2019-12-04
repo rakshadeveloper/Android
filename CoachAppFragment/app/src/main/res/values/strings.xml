@@ -6,5 +6,6 @@
     <string name="fragmentone">FragmentOne</string>
     <string name="GotoOther">Button</string>
     <string name="gotoother">GotoOther</string>
+    <string name="hi_fragment_three">Hi Fragment Three</string>
 
 </resources>
