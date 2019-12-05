@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.fragment_screen_one.view.*
 
 class FragmentScreenOne: Fragment(){
 
     interface OnFragmentScreenOneListener {
-        fun onLoginPressed()
+        fun goToTwo()
      }
 
 
@@ -34,7 +33,7 @@ class FragmentScreenOne: Fragment(){
 
         view.btnfragmentTeo.setOnClickListener{
             if (welcomListener != null) {
-                welcomListener!!.onLoginPressed()
+                welcomListener!!.goToTwo()
             }
 
 
@@ -85,7 +84,6 @@ class FragmentScreenOne: Fragment(){
         welcomListener = null
 
     }
-
     override fun onDetach() {
         super.onDetach()
     }

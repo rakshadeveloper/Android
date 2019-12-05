@@ -22,4 +22,6 @@
         android:text="@string/gotoother"
         android:textAllCaps="false"/>
 
+
+
 </RelativeLayout>

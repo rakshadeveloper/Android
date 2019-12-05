@@ -1,21 +1,13 @@
 package com.example.coachapp
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
-import android.os.BatteryManager
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentManager.*
 import androidx.fragment.app.FragmentTransaction
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() , FragmentScreenOne.OnFragmentScreenOneListener ,
-    FragmentScreentoe.OnFragmentScreentoeListener , FragmentScreenThree.OnFragmentScreenThreeListener {
+    FragmentScreentwo.OnFragmentScreentoeListener  ,
+    FragmentScreenThree.OnFragmentScreenThreeListener , FragmentScreenFour.onFrangmentScreenFourListner {
 
     private val fragmentManager = supportFragmentManager
 
@@ -26,11 +18,7 @@ class MainActivity : AppCompatActivity() , FragmentScreenOne.OnFragmentScreenOne
         setContentView(R.layout.activity_main)
 //        getSupportActionBar()!!.hide()
 
-        onLoginPressed()
-
-
-
-
+        onGotoOne()
 
 //        var intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
 //        this.registerReceiver(myBroadcastReceiver,intentFilter)
@@ -45,17 +33,25 @@ class MainActivity : AppCompatActivity() , FragmentScreenOne.OnFragmentScreenOne
         fragmentTransaction.commit()
     }
 
-    override fun onLoginPressed() {
-        loadFragment(R.id.frameLayout,fragmentManager.beginTransaction() , FragmentScreentoe() , "FragmentScreentoe", false)
-
+    override fun goToTwo() {
+        loadFragment(R.id.frameLayout,fragmentManager.beginTransaction() , FragmentScreentwo() , "FragmentScreentoe", false)
     }
 
-    override fun onGotoOtherPressed() {
-        loadFragment(R.id.frameLayout,fragmentManager.beginTransaction() , FragmentScreenOne() , "FragmentScreenOne", false)
-    }
-
-    override fun onGotoThreePressed() {
+    override fun gotoThree() {
         loadFragment(R.id.frameLayout,fragmentManager.beginTransaction() , FragmentScreenThree() , "FragmentScreenThree", false)
+
+    }
+
+    override fun gotoFour() {
+        loadFragment(R.id.frameLayout,fragmentManager.beginTransaction() , FragmentScreenFour() , "FragmentScreenFour", false)
+    }
+
+    fun onGotoOne() {
+        loadFragment(R.id.frameLayout,fragmentManager.beginTransaction() , FragmentScreenOne() , "FragmentScreenThree", false)
+    }
+
+    override fun onGotToOne() {
+        onGotoOne()
     }
 
 
@@ -65,8 +61,6 @@ class MainActivity : AppCompatActivity() , FragmentScreenOne.OnFragmentScreenOne
 //            POP_BACK_STACK_INCLUSIVE
 //        )
 //    }
-
-
 
 
 //    private val myBroadcastReceiver = object : BroadcastReceiver() {

@@ -6,17 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_screen_teo.view.*
+import kotlinx.android.synthetic.main.fragment_screen_four.view.*
 import kotlinx.android.synthetic.main.fragment_screen_three.view.*
 
-class FragmentScreenThree : Fragment() {
+class FragmentScreenFour : Fragment() {
 
-    interface OnFragmentScreenThreeListener{
-        fun gotoFour()
+    interface onFrangmentScreenFourListner {
+        fun onGotToOne()
+
     }
-    private var welcomeListener: OnFragmentScreenThreeListener? = null
-
-
+    private var welcomeListener: FragmentScreenFour.onFrangmentScreenFourListner? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,11 +24,11 @@ class FragmentScreenThree : Fragment() {
     ): View? {
 
 
-        val view = inflater.inflate(R.layout.fragment_screen_three, container, false)
+        val view = inflater.inflate(R.layout.fragment_screen_four, container, false)
 
-        view.goTo4.setOnClickListener {
+        view.onGoTofour.setOnClickListener {
             if (welcomeListener != null) {
-                welcomeListener!!.gotoFour()
+                welcomeListener!!.onGotToOne()
             }
         }
         return view
@@ -38,10 +37,10 @@ class FragmentScreenThree : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
-            welcomeListener = activity as OnFragmentScreenThreeListener
+            welcomeListener = activity as onFrangmentScreenFourListner
 
         } catch (e: ClassCastException) {
-            throw ClassCastException("$activity must implement OnFragmentScreenThreeListener")
+            throw ClassCastException("$activity must implement OnFragmentScreenFourListener")
         }
 
     }

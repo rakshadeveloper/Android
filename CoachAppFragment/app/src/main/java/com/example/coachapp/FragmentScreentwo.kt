@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_screen_teo.view.*
 
-class FragmentScreentoe: Fragment() {
+class FragmentScreentwo: Fragment() {
 
 
     interface OnFragmentScreentoeListener {
-        fun onGotoOtherPressed()
+        fun gotoThree()
 
     }
 
@@ -43,7 +43,7 @@ class FragmentScreentoe: Fragment() {
 
         view.btnLogin.setOnClickListener{
             if (welcomeListener != null) {
-                welcomeListener!!.onGotoOtherPressed()
+                welcomeListener!!.gotoThree()
             }
 
 
