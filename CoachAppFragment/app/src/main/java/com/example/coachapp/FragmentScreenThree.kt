@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_screen_teo.view.*
 import kotlinx.android.synthetic.main.fragment_screen_three.view.*
 
 class FragmentScreenThree : Fragment() {

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.BatteryManager
 
+
 class BatteryStatus {
     private val myBroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -26,21 +27,8 @@ class BatteryStatus {
                 val scale: Int = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
                 level / scale.toFloat()
             }
-            val percenage: Int = batteryPct?.times(100)!!.toInt()
-            if (percenage != null) {
-                percenage.toInt()
-//                battery_level.text = "$percenage %"
-            }
+            val percentage: Int = batteryPct?.times(100)!!.toInt()
 
-            if ( isCharging ) {
-//                battery_ChargingStatus.text = "Charging"
-            }
-            else if(percenage == 100) {
-//                battery_ChargingStatus.text = "Battery Full"
-            }
-            else {
-//                battery_ChargingStatus.text = "Not Charging"
-            }
         }
 
     }
