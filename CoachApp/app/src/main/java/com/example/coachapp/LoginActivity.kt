@@ -16,30 +16,32 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener {
 
     var spinner: Spinner? = null
-    var userID = etUserID
-    var userPIN = etPIN
-    var languages = arrayOf("English", "French", "Spanish", "Hindi", "Russian","Spanish", "Hindi", "Russian","English", "French", "Spanish", "Hindi", "Russian","Spanish", "Hindi", "Russian")
-    val logins = arrayOf("11","12","13","14","15")
-    val loginsName = arrayOf("harry","Coal","Jhon","Stephen","Alexander")
-    val loginPIN = arrayOf("11","12","13","14","15")
+
+    var languages = arrayOf("Shortline")
+//    val logins = arrayOf("11","12","13","14","15")
+//    val loginsName = arrayOf("harry","Coal","Jhon","Stev","Alexander")
+//    val loginPIN = arrayOf("11","12","13","14","15")
+    val userID = "12"
+    val userPin = "1234"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        ibtnOptions.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        ibtnBack.setOnClickListener {
+            finish()
         }
         btnLoginUser.setOnClickListener {
+            if (etUserID.text.toString() == userID && etPIN.text.toString()== userPin) {
+                val intent = Intent(this, UserDetailActivity::class.java)
+                intent.putExtra("Hi Name", "")
+                startActivity(intent)
+            }
+            else {
+                etUserID.error = "Enter User ID"
+                etPIN.error = "Enter PIN"
+            }
 
-//            if (userID == logins && userPIN == loginPIN ) {
-//                val intent = Intent(this, MainActivity::class.java)
-//                intent.putExtra("$loginsName", loginsName)
-//                startActivity(intent)
-//            }
-            val intent = Intent(this, UserDetailActivity::class.java)
-            startActivity(intent)
         }
 
         spinner = this.spnrCrrrier
