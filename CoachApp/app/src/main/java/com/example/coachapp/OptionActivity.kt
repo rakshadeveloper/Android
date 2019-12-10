@@ -1,11 +1,10 @@
 package com.example.coachapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_option.*
-import kotlinx.android.synthetic.main.activity_userdetail.*
 
 class OptionActivity : AppCompatActivity() {
 
@@ -20,6 +19,9 @@ class OptionActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+        tvDeviceInformation.setOnClickListener {
+            val intent = Intent (this, DeviceInformationActivity::class.java)
+            startActivity(intent)
+        }
     }
-
 }
