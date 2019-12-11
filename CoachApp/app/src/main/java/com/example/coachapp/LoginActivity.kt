@@ -23,6 +23,7 @@ class LoginActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener {
 //    val loginPIN = arrayOf("11","12","13","14","15")
     val userID = "12"
     val userPin = "1234"
+    val userName = "Alex"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +35,16 @@ class LoginActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener {
         btnLoginUser.setOnClickListener {
             if (etUserID.text.toString() == userID && etPIN.text.toString()== userPin) {
                 val intent = Intent(this, UserDetailActivity::class.java)
-                intent.putExtra("Hi Name", "")
+                intent.putExtra("UserName", userName )
                 startActivity(intent)
             }
             else {
-                etUserID.error = "Enter User ID"
-                etPIN.error = "Enter PIN"
+                if (etUserID.text.toString() != userID) {
+                    etUserID.error = "Enter User ID"
+                }
+                if (etPIN.text.toString() != userPin) {
+                    etPIN.error = "Enter PIN"
+                }
             }
 
         }
@@ -52,42 +57,43 @@ class LoginActivity : AppCompatActivity() , AdapterView.OnItemSelectedListener {
         spinner!!.setAdapter(aa)
 
         var intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-        this.registerReceiver(myBroadcastReceiver,intentFilter)
-    }
 
-    private val myBroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
+        val myBroadcastReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
 
-            val batteryStatus: Intent? =
-                IntentFilter(Intent.ACTION_BATTERY_CHANGED).let { ifilter ->
-                    context?.registerReceiver(null, ifilter)
+                val batteryStatus: Intent? =
+                    IntentFilter(Intent.ACTION_BATTERY_CHANGED).let { ifilter ->
+                        context?.registerReceiver(null, ifilter)
+                    }
+                val status: Int = batteryStatus?.getIntExtra(BatteryManager.EXTRA_STATUS, -1) ?: -1
+                val isCharging: Boolean = status == BatteryManager.BATTERY_STATUS_CHARGING
+                        || status == BatteryManager.BATTERY_STATUS_FULL
+
+                val chargePlug: Int =
+                    batteryStatus?.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1) ?: -1
+                val usbCharge: Boolean = chargePlug == BatteryManager.BATTERY_PLUGGED_USB
+                val acCharge: Boolean = chargePlug == BatteryManager.BATTERY_PLUGGED_AC
+
+                val batteryPct: Float? = batteryStatus?.let { intent ->
+                    val level: Int = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
+                    val scale: Int = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
+                    level / scale.toFloat()
                 }
-            val status: Int = batteryStatus?.getIntExtra(BatteryManager.EXTRA_STATUS, -1) ?: -1
-            val isCharging: Boolean = status == BatteryManager.BATTERY_STATUS_CHARGING
-                    || status == BatteryManager.BATTERY_STATUS_FULL
+                val percentage: Int = batteryPct?.times(100)!!.toInt()
+                if (percentage != null) {
+                    percentage.toInt()
+                    progressBarOnLogin.incrementProgressBy(percentage)
+                }
+                if (isCharging) {
 
-            val chargePlug: Int =
-                batteryStatus?.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1) ?: -1
-            val usbCharge: Boolean = chargePlug == BatteryManager.BATTERY_PLUGGED_USB
-            val acCharge: Boolean = chargePlug == BatteryManager.BATTERY_PLUGGED_AC
+                } else {
+                    ivChargingStausOnLogin.setVisibility(View.GONE)
+                }
 
-            val batteryPct: Float? = batteryStatus?.let { intent ->
-                val level: Int = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
-                val scale: Int = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
-                level / scale.toFloat()
             }
-            val percentage: Int = batteryPct?.times(100)!!.toInt()
-            if (percentage != null) {
-                percentage.toInt()
-                progressBarOnLogin.incrementProgressBy(percentage)
-            }
-            if (isCharging) {
-
-            } else {
-                ivChargingStausOnLogin.setVisibility(View.GONE)
-            }
-
         }
+
+        this.registerReceiver(myBroadcastReceiver,intentFilter)
     }
 
     override fun onItemSelected(arg0: AdapterView<*>, arg1: View, position: Int, id: Long) {

@@ -1,6 +1,5 @@
 package com.example.coachapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +20,10 @@ class OptionActivity : AppCompatActivity() {
         }
         tvDeviceInformation.setOnClickListener {
             val intent = Intent (this, DeviceInformationActivity::class.java)
+            startActivity(intent)
+        }
+        tvSendAppFeedback.setOnClickListener {
+            val intent = Intent (this, FeedbackActivity::class.java)
             startActivity(intent)
         }
     }

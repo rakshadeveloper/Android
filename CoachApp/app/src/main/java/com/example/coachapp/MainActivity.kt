@@ -1,18 +1,24 @@
 package com.example.coachapp
 
-import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.net.Uri
 import android.os.BatteryManager
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import android.telephony.TelephonyManager
+import android.view.View
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,11 +29,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         var intentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
-        this.registerReceiver(myBroadcastReceiver,intentFilter)
-    }
 
-
-        private val myBroadcastReceiver = object : BroadcastReceiver() {
+        val myBroadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
 
                 val batteryStatus: Intent? =
@@ -61,4 +64,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+        this.registerReceiver(myBroadcastReceiver,intentFilter)
+    }
 }
