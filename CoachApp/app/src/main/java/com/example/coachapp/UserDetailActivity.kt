@@ -8,6 +8,8 @@ import android.os.BatteryManager
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main.activity_userdetail.*
 
 class UserDetailActivity: AppCompatActivity() {
@@ -63,5 +65,14 @@ class UserDetailActivity: AppCompatActivity() {
             val intent = Intent(this, OptionActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    fun loadFragment(layout : Int, fragmentTransaction : FragmentTransaction, fragment : Fragment, tag : String, addToBackStack : Boolean) {
+        val fragmentObject = fragment
+        fragmentTransaction.replace(layout, fragmentObject, tag)
+        if(addToBackStack){
+            fragmentTransaction.addToBackStack(null)
+        }
+        fragmentTransaction.commit()
     }
 }
