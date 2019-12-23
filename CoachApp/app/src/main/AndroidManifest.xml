@@ -20,7 +20,7 @@
         <activity android:name=".UserDetailActivity"></activity>
         <activity android:name=".OptionActivity"></activity>
         <activity android:name=".DeviceInformationActivity"></activity>
-        <activity android:name=".FeedbackActivity"></activity>
+        <activity android:name=".FeedbackFragment"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

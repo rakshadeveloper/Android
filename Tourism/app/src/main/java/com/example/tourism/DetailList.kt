@@ -2,4 +2,4 @@ package com.example.tourism
 
 import android.media.Image
 
-data class DetailList (val images: Image, val subPlaceName: String , val subPlaceDetail: String)
+data class DetailList (var subPlaceName: String , var subPlaceDetail: String, var subPlaceImage: Int)

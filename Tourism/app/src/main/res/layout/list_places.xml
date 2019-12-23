@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#F9A825"
+    >
 
     <androidx.cardview.widget.CardView
         android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content" >
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#786386"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:baselineAligned="false">
 
                 <ImageView
                     android:id="@+id/ivPlaces"
-                    android:background="@drawable/ic_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/tvSubPlaceNames"
-                    android:layout_width="185dp"
+                    android:textColor="#000000"
+                    android:scrollbars="horizontal"
+                    android:scrollHorizontally="true"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginRight="12dp"
-                    android:text="Hi All" />
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@+id/ivPlaces"
+                     />
 
                 <TextView
                     android:id="@+id/tvSubPlaceDetail"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
                     android:layout_width="185dp"
                     android:layout_height="70dp"
                     android:layout_alignParentTop="true"
@@ -45,7 +51,8 @@
                     android:layout_marginTop="50dp"
                     android:layout_marginEnd="12dp"
                     android:layout_marginRight="13dp"
-                    android:text="All is Well" />
+                    android:layout_toRightOf="@+id/ivPlaces"
+                     />
             </RelativeLayout>
 
         </LinearLayout>

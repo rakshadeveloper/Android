@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/images"
     tools:context=".MainActivity">
 
     <ImageView
@@ -29,8 +29,9 @@
         android:layout_marginStart="180dp"
         android:layout_marginLeft="180dp"
         android:layout_marginTop="178dp"
+        android:gravity="end"
         android:textAlignment="viewEnd"
-        android:textColor="#000000"
+        android:textColor="#0077FF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/ivPlaceImage"
@@ -39,8 +40,7 @@
         app:layout_constraintStart_toStartOf="@+id/ivPlaceImage"
         app:layout_constraintTop_toTopOf="@+id/ivPlaceImage"
         app:layout_constraintVertical_bias="1.0"
-        tools:ignore="MissingConstraints"
-        android:gravity="end" />
+        tools:ignore="MissingConstraints" />
 
 
     <TextView
@@ -53,7 +53,7 @@
         android:layout_marginRight="20dp"
         android:minLines="100"
         android:scrollbars="vertical"
-        android:textColor="#000000"
+        android:textColor="#0076FF"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -71,7 +71,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:text="About"
-        android:textColor="#000000"
+        android:textColor="#0078FF"
         android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +96,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="HardcodedText" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@ class OptionActivity : AppCompatActivity() {
             startActivity(intent)
         }
         tvSendAppFeedback.setOnClickListener {
-            val intent = Intent (this, FeedbackActivity::class.java)
+            val intent = Intent (this, FeedbackFragment::class.java)
             startActivity(intent)
         }
     }
