@@ -7,16 +7,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.list_places.*
 
 class CustomAdapter (var list: ArrayList<DetailList>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>(){
 
-    class ViewHolder (iteamView : View) : RecyclerView.ViewHolder(iteamView) {
+    class ViewHolder (iteamView : View) : RecyclerView.ViewHolder(iteamView)  {
 
         val ivPlaces = iteamView.findViewById(R.id.ivPlaces) as ImageView
         val tvSubPlaceNames = iteamView.findViewById(R.id.tvSubPlaceNames) as TextView
         val tvSubPlaceDetail = iteamView.findViewById(R.id.tvSubPlaceDetail) as TextView
 
+        public interface cardSetClickListner {
+            fun onClicke(position: Int)
+        }
 
     }
 
@@ -36,7 +38,6 @@ class CustomAdapter (var list: ArrayList<DetailList>) : RecyclerView.Adapter<Cus
         holder.tvSubPlaceDetail.text = place.subPlaceDetail
         holder.ivPlaces.setImageResource(place.subPlaceImage)
         holder.tvSubPlaceDetail.setMovementMethod(ScrollingMovementMethod())
-
 
     }
 }

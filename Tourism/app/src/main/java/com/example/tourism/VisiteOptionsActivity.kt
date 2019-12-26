@@ -3,12 +3,13 @@ package com.example.tourism
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_visite_options.*
 
-class VisiteOptionsActivity : AppCompatActivity() {
+class VisiteOptionsActivity : AppCompatActivity() ,CustomAdapter.ViewHolder.cardSetClickListner{
 
     private lateinit var linearLayoutManager: LinearLayoutManager
 
@@ -36,5 +37,11 @@ class VisiteOptionsActivity : AppCompatActivity() {
 
         recyclerView.adapter = adapter
 
-        }
+    }
+
+    override fun onClicke(position: Int) {
+
+        Toast.makeText(this , "Clicked" , Toast.LENGTH_SHORT).show()
+
+    }
 }

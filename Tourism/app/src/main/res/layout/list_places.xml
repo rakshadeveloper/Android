@@ -6,9 +6,10 @@
     >
 
     <androidx.cardview.widget.CardView
-        android:layout_margin="5dp"
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,21 +29,18 @@
 
                 <TextView
                     android:id="@+id/tvSubPlaceNames"
-                    android:textColor="#000000"
-                    android:scrollbars="horizontal"
-                    android:scrollHorizontally="true"
-                    android:textSize="23sp"
-                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
                     android:layout_toRightOf="@+id/ivPlaces"
-                     />
+                    android:scrollbars="horizontal"
+                    android:scrollHorizontally="true"
+                    android:textColor="#000000"
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvSubPlaceDetail"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
                     android:layout_width="185dp"
                     android:layout_height="70dp"
                     android:layout_alignParentTop="true"
@@ -52,7 +50,8 @@
                     android:layout_marginEnd="12dp"
                     android:layout_marginRight="13dp"
                     android:layout_toRightOf="@+id/ivPlaces"
-                     />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
             </RelativeLayout>
 
         </LinearLayout>
