@@ -8,17 +8,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter (var list: ArrayList<DetailList>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>(){
+class CustomAdapter(
+    var list: ArrayList<DetailList>,
+    val listener: RecyclerItemClickListener
+) : RecyclerView.Adapter<CustomAdapter.ViewHolder>(){
 
     class ViewHolder (iteamView : View) : RecyclerView.ViewHolder(iteamView)  {
 
         val ivPlaces = iteamView.findViewById(R.id.ivPlaces) as ImageView
         val tvSubPlaceNames = iteamView.findViewById(R.id.tvSubPlaceNames) as TextView
         val tvSubPlaceDetail = iteamView.findViewById(R.id.tvSubPlaceDetail) as TextView
-
-        public interface cardSetClickListner {
-            fun onClicke(position: Int)
-        }
 
     }
 
@@ -38,6 +37,11 @@ class CustomAdapter (var list: ArrayList<DetailList>) : RecyclerView.Adapter<Cus
         holder.tvSubPlaceDetail.text = place.subPlaceDetail
         holder.ivPlaces.setImageResource(place.subPlaceImage)
         holder.tvSubPlaceDetail.setMovementMethod(ScrollingMovementMethod())
+
+        holder.itemView.setOnClickListener { if (listener != null) {
+            listener.OnItemClick(position)
+        }}
+
 
     }
 }

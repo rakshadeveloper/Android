@@ -1,7 +1,9 @@
 package com.example.tourism
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_visite_options.*
 
-class VisiteOptionsActivity : AppCompatActivity() ,CustomAdapter.ViewHolder.cardSetClickListner{
+class VisiteOptionsActivity : AppCompatActivity() , RecyclerItemClickListener{
 
     private lateinit var linearLayoutManager: LinearLayoutManager
+    val lists = ArrayList<DetailList>()
 
     @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +27,7 @@ class VisiteOptionsActivity : AppCompatActivity() ,CustomAdapter.ViewHolder.card
         val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this , LinearLayout.VERTICAL , false)
 
-        val lists = ArrayList<DetailList>()
+//        val lists = ArrayList<DetailList>()
 
         lists.add(DetailList("Emam Bara", "Bara Imambara, also known as Asfi Mosque is an imambara complex in Lucknow, India built by Asaf-ud-Daula, Nawab of Awadh in 1784. Bara means big.", R.drawable.emam_bara))
         lists.add(DetailList("Rumi Darwaza", "The Rumi Darwaza, in Lucknow, Uttar Pradesh, India, is an imposing gateway which was built under the patronage of Nawab Asaf-Ud-daula in 1784. It is an example of Awadhi architecture. The Rumi Darwaza, which stands sixty feet tall, was modeled after the Sublime Porte in Istanbul.", R.drawable.rumi_darwaza))
@@ -33,15 +36,25 @@ class VisiteOptionsActivity : AppCompatActivity() ,CustomAdapter.ViewHolder.card
         lists.add(DetailList("Gomti Riverfront Park", "Gomti Riverfront is a newly constructed park with some excellent asthetic attraction positioned in Lucknow, Uttar Pradesh.", R.drawable.gomti_riverfront_park))
         lists.add(DetailList("NBRI", "The National Botanical Research Institute is a research institute of CSIR in Lucknow. It is engaged in the field of taxonomy and modern biology.", R.drawable.nbri))
 
-        val adapter = CustomAdapter(lists)
+        val adapter = CustomAdapter(lists, this)
 
         recyclerView.adapter = adapter
 
     }
 
-    override fun onClicke(position: Int) {
+    override fun OnItemClick(position: Int) {
+        Log.e("ON ITEM CLICK POSITION", "${position}")
+        val intent = Intent(this, PlaceDetailActivity::class.java)
+        val r = lists[position]
+        var detail = lists[position]
 
-        Toast.makeText(this , "Clicked" , Toast.LENGTH_SHORT).show()
+        var placename =  detail.subPlaceName
+        var placeDetail =  detail.subPlaceDetail
+        var image = detail.subPlaceImage
 
+        intent.putExtra("placename", placename)
+        intent.putExtra("placeDetail", placeDetail)
+        intent.putExtra("image", image)
+        startActivity(intent)
     }
 }
