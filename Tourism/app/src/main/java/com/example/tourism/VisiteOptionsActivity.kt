@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,8 +25,6 @@ class VisiteOptionsActivity : AppCompatActivity() , RecyclerItemClickListener{
 
         val recyclerView = findViewById(R.id.recyclerView) as RecyclerView
         recyclerView.layoutManager = LinearLayoutManager(this , LinearLayout.VERTICAL , false)
-
-//        val lists = ArrayList<DetailList>()
 
         lists.add(DetailList("Emam Bara", "Bara Imambara, also known as Asfi Mosque is an imambara complex in Lucknow, India built by Asaf-ud-Daula, Nawab of Awadh in 1784. Bara means big.", R.drawable.emam_bara))
         lists.add(DetailList("Rumi Darwaza", "The Rumi Darwaza, in Lucknow, Uttar Pradesh, India, is an imposing gateway which was built under the patronage of Nawab Asaf-Ud-daula in 1784. It is an example of Awadhi architecture. The Rumi Darwaza, which stands sixty feet tall, was modeled after the Sublime Porte in Istanbul.", R.drawable.rumi_darwaza))

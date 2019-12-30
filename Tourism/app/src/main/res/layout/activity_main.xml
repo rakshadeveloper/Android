@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+
     <TextView
         android:id="@+id/tvPlaceName"
         android:layout_width="172dp"
@@ -29,18 +30,17 @@
         android:layout_marginLeft="180dp"
         android:layout_marginTop="178dp"
         android:gravity="end"
-        android:textAlignment="viewEnd"
+        android:textAlignment="textEnd"
         android:textColor="#0077FF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/ivPlaceImage"
         app:layout_constraintEnd_toEndOf="@+id/ivPlaceImage"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="@+id/ivPlaceImage"
         app:layout_constraintTop_toTopOf="@+id/ivPlaceImage"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
-
 
     <TextView
         android:id="@+id/tvAboutPlace"
