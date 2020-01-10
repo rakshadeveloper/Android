@@ -1,6 +1,6 @@
 package com.example.tourism
 
-import android.text.method.ScrollingMovementMethod
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,21 +8,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(
+class CustomAdapterStaggered (
     var list: ArrayList<DetailList>,
     val listener: RecyclerItemClickListener
-) : RecyclerView.Adapter<CustomAdapter.ViewHolder>(){
+): RecyclerView.Adapter<CustomAdapterStaggered.ViewHolder>() {
 
     class ViewHolder (iteamView : View) : RecyclerView.ViewHolder(iteamView)  {
 
-        val ivPlaces = iteamView.findViewById(R.id.ivPlaces) as ImageView
-        val tvSubPlaceNames = iteamView.findViewById(R.id.tvSubPlaceNames) as TextView
-        val tvSubPlaceDetail = iteamView.findViewById(R.id.tvSubPlaceDetail) as TextView
+        val ivPlaceImageGrid = iteamView.findViewById(R.id.ivPlaceImageGrid) as ImageView
+        val tvTitleGrid = iteamView.findViewById(R.id.tvTitleGrid) as TextView
+//        val tvSubPlaceDetail = iteamView.findViewById(R.id.tvSubPlaceDetail) as TextView
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent?.context).inflate(R.layout.list_places, parent, false)
+        val v = LayoutInflater.from(parent?.context).inflate(R.layout.grid_places, parent, false)
         return ViewHolder(v)
     }
 
@@ -33,10 +33,10 @@ class CustomAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val place :DetailList  = list[position]
 
-        holder.tvSubPlaceNames.text = place.subPlaceName
-        holder.tvSubPlaceDetail.text = place.subPlaceDetail
-        holder.ivPlaces.setImageResource(place.subPlaceImage)
-        holder.tvSubPlaceDetail.setMovementMethod(ScrollingMovementMethod())
+        holder.tvTitleGrid.text = place.subPlaceName
+//        holder.tvSubPlaceDetail.text = place.subPlaceDetail
+        holder.ivPlaceImageGrid.setImageResource(place.subPlaceImage)
+//        holder.tvSubPlaceDetail.setMovementMethod(ScrollingMovementMethod())
 
         holder.itemView.setOnClickListener { if (listener != null) {
             listener.OnItemClick(position)
@@ -45,4 +45,3 @@ class CustomAdapter(
 
     }
 }
-

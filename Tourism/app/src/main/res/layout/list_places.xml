@@ -31,7 +31,7 @@
                     android:id="@+id/tvSubPlaceNames"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_margin="10dp"
+                    android:layout_margin="0dp"
                     android:layout_toRightOf="@+id/ivPlaces"
                     android:scrollbars="horizontal"
                     android:scrollHorizontally="true"
@@ -41,18 +41,32 @@
 
                 <TextView
                     android:id="@+id/tvSubPlaceDetail"
-                    android:layout_width="185dp"
-                    android:layout_height="70dp"
+                    android:layout_width="191dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="31dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="11dp"
                     android:layout_toRightOf="@+id/ivPlaces"
                     android:textColor="#000000"
                     android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_toRightOf="@+id/ivPlaces"
+                    android:layout_marginTop="60dp"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="#001FFF"
+                    android:text="more>>>>"
+                    android:textStyle="bold"
+                    android:gravity="bottom|right" />
+
             </RelativeLayout>
+
+
 
         </LinearLayout>
 
