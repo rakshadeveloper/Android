@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.tourism.adapter.CustomAdapterGrid
+import com.example.tourism.adapter.CustomAdapterList
+import com.example.tourism.adapter.CustomAdapterStaggered
 import kotlinx.android.synthetic.main.activity_visite_options.*
 
 
@@ -29,41 +32,52 @@ class VisiteOptionsActivity : AppCompatActivity() , RecyclerItemClickListener{
 
         button.setOnClickListener {
             if (view_grid == false) {
-                button.setImageResource(R.drawable.ic_list)
+                button.setImageResource(R.drawable.ic_stagger)
+                tvRecyclerViewStyle.text = "Grid View"
                 //            gridLayoutManager.setSpanCount(if (gridLayoutManager.spanCount == 2) 1 else 2)
                 gridLayoutManager = GridLayoutManager (this, 2)
                 recyclerView.layoutManager = gridLayoutManager
-                val adapter = CustomAdapterGrid(lists, this)
+                val adapter =
+                    CustomAdapterGrid(lists, this)
 
                 recyclerView.adapter = adapter
                 view_grid = true
             }
             else if (view_list == false) {
-
+                button.setImageResource(R.drawable.ic_list)
+                tvRecyclerViewStyle.text = "Staggered View"
 
                 val staggeredGridLayoutManager =
-                    StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
+                    StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
                 recyclerView.layoutManager = staggeredGridLayoutManager
 
-                val adapter = CustomAdapterStaggered(lists, this)
+                val adapter = CustomAdapterStaggered(
+                    lists,
+                    this
+                )
 
                 recyclerView.adapter = adapter
-                view_grid = false
+                view_list = true
+
             }
             else {
                 button.setImageResource(R.drawable.ic_grid)
+                tvRecyclerViewStyle.text = "List View"
                 linearLayoutManager = LinearLayoutManager(this)
                 recyclerView.layoutManager = linearLayoutManager
                 recyclerView.layoutManager = LinearLayoutManager(this , LinearLayout.VERTICAL , false)
 
-                val adapter = CustomAdapterList(lists, this)
+                val adapter =
+                    CustomAdapterList(lists, this)
 
                 recyclerView.adapter = adapter
-                view_list = true
+                view_grid = false
+                view_list = false
             }
 
         }
         button.setImageResource(R.drawable.ic_grid)
+        tvRecyclerViewStyle.text = "List View"
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.layoutManager = LinearLayoutManager(this , LinearLayout.VERTICAL , false)

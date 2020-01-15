@@ -5,13 +5,15 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.tourism.adapter.ImageSliderAdapter
 import kotlinx.android.synthetic.main.activity_placedetail.*
 
 
 class PlaceDetailActivity : AppCompatActivity() {
 
     var img :Array<Int> = arrayOf(R.drawable.benz2 , R.drawable.bikess , R.drawable.harley2 , R.drawable.img1 , R.drawable.vecto , R.drawable.webshots)
-    var adapter : PagerAdapter = ImageSliderAdapter(context = application ,
+    var adapter : PagerAdapter = ImageSliderAdapter(
+        context = application,
         slidingImage = img
     )
     val pagerView = findViewById(R.id.pager) as ViewPager

@@ -1,4 +1,4 @@
-package com.example.tourism
+package com.example.tourism.adapter
 
 
 import android.view.LayoutInflater
@@ -7,22 +7,25 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tourism.DetailList
+import com.example.tourism.R
+import com.example.tourism.RecyclerItemClickListener
 
-class CustomAdapterGrid(
+class CustomAdapterStaggered (
     var list: ArrayList<DetailList>,
     val listener: RecyclerItemClickListener
-) : RecyclerView.Adapter<CustomAdapterGrid.ViewHolder>(){
+): RecyclerView.Adapter<CustomAdapterStaggered.ViewHolder>() {
 
     class ViewHolder (iteamView : View) : RecyclerView.ViewHolder(iteamView)  {
 
-        val ivPlaceImageGrid = iteamView.findViewById(R.id.ivPlaceImageGrid) as ImageView
-        val tvTitleGrid = iteamView.findViewById(R.id.tvTitleGrid) as TextView
+        val ivPlaceImageStaggered = iteamView.findViewById(R.id.ivPlaceImageStaggered) as ImageView
+        val tvTitleStaggered = iteamView.findViewById(R.id.tvTitleStaggered) as TextView
 //        val tvSubPlaceDetail = iteamView.findViewById(R.id.tvSubPlaceDetail) as TextView
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent?.context).inflate(R.layout.grid_places, parent, false)
+        val v = LayoutInflater.from(parent?.context).inflate(R.layout.staggered_places, parent, false)
         return ViewHolder(v)
     }
 
@@ -31,11 +34,11 @@ class CustomAdapterGrid(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val place :DetailList  = list[position]
+        val place : DetailList = list[position]
 
-        holder.tvTitleGrid.text = place.subPlaceName
+        holder.tvTitleStaggered.text = place.subPlaceName
 //        holder.tvSubPlaceDetail.text = place.subPlaceDetail
-        holder.ivPlaceImageGrid.setImageResource(place.subPlaceImage)
+        holder.ivPlaceImageStaggered.setImageResource(place.subPlaceImage)
 //        holder.tvSubPlaceDetail.setMovementMethod(ScrollingMovementMethod())
 
         holder.itemView.setOnClickListener { if (listener != null) {
@@ -45,4 +48,3 @@ class CustomAdapterGrid(
 
     }
 }
-

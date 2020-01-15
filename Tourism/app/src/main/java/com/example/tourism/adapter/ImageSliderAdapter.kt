@@ -1,4 +1,4 @@
-package com.example.tourism
+package com.example.tourism.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.viewpager.widget.PagerAdapter
+import com.example.tourism.R
 
 class ImageSliderAdapter : PagerAdapter {
 
@@ -30,7 +31,7 @@ class ImageSliderAdapter : PagerAdapter {
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         var images : ImageView
         inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var view : View = inflater.inflate(R.layout.slidingimage_layout , container , false)
+        var view : View = inflater.inflate(R.layout.slidingimage_layout, container , false)
         images = view.findViewById(R.id.ivMultiImage)
         images.setBackgroundResource(slidingImage[position])
         container!!.addView(view)

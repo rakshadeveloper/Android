@@ -28,7 +28,19 @@
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        tools:ignore="HardcodedText,MissingConstraints" />
+        tools:ignore="ContentDescription,HardcodedText,MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvRecyclerViewStyle"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

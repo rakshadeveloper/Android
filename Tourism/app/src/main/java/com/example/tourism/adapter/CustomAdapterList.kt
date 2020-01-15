@@ -1,4 +1,4 @@
-package com.example.tourism
+package com.example.tourism.adapter
 
 import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tourism.DetailList
+import com.example.tourism.R
+import com.example.tourism.RecyclerItemClickListener
 
 class CustomAdapterList(
     var list: ArrayList<DetailList>,
@@ -31,7 +34,7 @@ class CustomAdapterList(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val place :DetailList  = list[position]
+        val place : DetailList = list[position]
 
         holder.tvSubPlaceNames.text = place.subPlaceName
         holder.tvSubPlaceDetail.text = place.subPlaceDetail
