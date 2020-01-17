@@ -13,7 +13,7 @@ class PlaceDetailActivity : AppCompatActivity() {
 
     var img :Array<Int> = arrayOf(R.drawable.benz2 , R.drawable.bikess , R.drawable.harley2 , R.drawable.img1 , R.drawable.vecto , R.drawable.webshots)
     var adapter : PagerAdapter = ImageSliderAdapter(
-        context = application,
+        context = this,
         slidingImage = img
     )
     val pagerView = findViewById(R.id.pager) as ViewPager

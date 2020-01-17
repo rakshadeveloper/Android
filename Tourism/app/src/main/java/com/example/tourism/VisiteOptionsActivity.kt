@@ -92,6 +92,7 @@ class VisiteOptionsActivity : AppCompatActivity() , RecyclerItemClickListener{
         lists.add(DetailList("Chattar Manzil", "The Chattar Manzil, or Umbrella Palace is a building in Lucknow in Uttar Pradesh which served as a palace for the rulers of Awadh and their wives. Coordinates:26°85′N 80°93′E", R.drawable.chattar_manzil))
         lists.add(DetailList("Gomti Riverfront Park", "Gomti Riverfront is a newly constructed park with some excellent asthetic attraction positioned in Lucknow, Uttar Pradesh.", R.drawable.gomti_riverfront_park))
         lists.add(DetailList("NBRI", "The National Botanical Research Institute is a research institute of CSIR in Lucknow. It is engaged in the field of taxonomy and modern biology.", R.drawable.nbri))
+
     }
 
     override fun OnItemClick(position: Int) {
