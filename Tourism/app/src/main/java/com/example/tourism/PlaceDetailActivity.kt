@@ -3,20 +3,12 @@ package com.example.tourism
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
-import com.example.tourism.adapter.ImageSliderAdapter
 import kotlinx.android.synthetic.main.activity_placedetail.*
 
 
 class PlaceDetailActivity : AppCompatActivity() {
 
-    var img :Array<Int> = arrayOf(R.drawable.benz2 , R.drawable.bikess , R.drawable.harley2 , R.drawable.img1 , R.drawable.vecto , R.drawable.webshots)
-    var adapter : PagerAdapter = ImageSliderAdapter(
-        context = this,
-        slidingImage = img
-    )
-    val pagerView = findViewById(R.id.pager) as ViewPager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +24,6 @@ class PlaceDetailActivity : AppCompatActivity() {
         tvTitle.text = place_name
         tvTitleDetail.text = place_name_detail
         image.setImageResource(place_image)
-        pagerView.adapter = adapter
     }
 
 }
