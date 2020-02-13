@@ -1,9 +1,10 @@
-package com.example.youtubersapp
+package com.example.youtubersapp.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.youtubersapp.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         Handler().postDelayed({
             val i = Intent(this, SecondScreen::class.java)
             startActivity(i)
-        }, 5000)
+            finish()
+        }, 1000)
     }
 }

@@ -8,15 +8,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondScreen"/>
+        <activity android:name=".activity.SecondScreen"/>
+        <activity android:name=".activity.ThirdScreen"/>
+        <activity android:name=".activity.FourthOptionScreen"/>
+        <activity android:name=".activity.FiveSearchScreen"/>
     </application>
 
 </manifest>
