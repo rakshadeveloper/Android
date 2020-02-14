@@ -65,7 +65,7 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_option" />
+        android:src="@drawable/ic_option" />
 
     <ImageButton
         android:id="@+id/ivSearchButton"
@@ -74,8 +74,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="6dp"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_search" />
+        android:src="@drawable/ic_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
