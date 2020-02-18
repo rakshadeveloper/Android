@@ -34,11 +34,10 @@ class ThirdScreen : AppCompatActivity(), MovieFragment.OnFragmentInteractionList
 
     var tabLayout = findViewById<TabLayout>(R.id.tabLayout)
     var viewPager = findViewById<ViewPager>(R.id.viewPager)
-
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Video"))
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Playlist"))
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Notification"))
-        tabLayout!!.addTab(tabLayout!!.newTab().setText("Favorites"))
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_youtube).setText("Video"))
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_album).setText("Playlist"))
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_bell).setText("Notification"))
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_heart).setText("Favorites"))
         tabLayout!!.tabGravity = TabLayout.GRAVITY_CENTER
 
         val adapter = MyAdapter(this, supportFragmentManager, tabLayout!!.tabCount)
